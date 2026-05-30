@@ -157,13 +157,13 @@ class Equipamento: Manutivel {
         if estadoAtual == .defeituoso {
             let registro = RegistroReparo(data: data, status: .irregular, descricao: "FALHA: equipamento defeituoso — \(descricao)")
             historicoReparos.append(registro)
-            print("❌ Manutenção de '\(nomeItem)' falhou: equipamento está defeituoso e fora de operação.")
+            print("Manutenção de '\(nomeItem)' falhou: equipamento está defeituoso e fora de operação.")
             return .irregular
         }
 
         let registro = RegistroReparo(data: data, status: .regular, descricao: descricao)
         historicoReparos.append(registro)
-        print("✅ Manutenção de '\(nomeItem)' registrada com sucesso em \(data).")
+        print("Manutenção de '\(nomeItem)' registrada com sucesso em \(data).")
         return .regular
     }
 }
@@ -208,29 +208,29 @@ class TurmaColetiva: Aula {
         let jaInscrito = alunosInscritos.contains { $0.matricula == aluno.matricula }
 
         if jaInscrito {
-            print("⚠️  \(aluno.nome) já está inscrito em '\(nomeAula)'.")
+            print("\(aluno.nome) já está inscrito em '\(nomeAula)'.")
             return
         }
 
         if vagasDisponiveis == 0 {
-            print("⚠️  Sem vagas em '\(nomeAula)'. \(aluno.nome) não foi inscrito.")
+            print("Sem vagas em '\(nomeAula)'. \(aluno.nome) não foi inscrito.")
             return
         }
 
         alunosInscritos.append(aluno)
-        print("✅ \(aluno.nome) inscrito em '\(nomeAula)'. Vagas restantes: \(vagasDisponiveis).")
+        print("\(aluno.nome) inscrito em '\(nomeAula)'. Vagas restantes: \(vagasDisponiveis).")
     }
 
     func removerAluno(aluno: Aluno) {
         let jaInscrito = alunosInscritos.contains { $0.matricula == aluno.matricula }
 
         if !jaInscrito {
-            print("⚠️  \(aluno.nome) não está inscrito em '\(nomeAula)'.")
+            print("\(aluno.nome) não está inscrito em '\(nomeAula)'.")
             return
         }
 
         alunosInscritos.removeAll { $0.matricula == aluno.matricula }
-        print("🗑️  \(aluno.nome) removido de '\(nomeAula)'.")
+        print("\(aluno.nome) removido de '\(nomeAula)'.")
     }
 }
 
